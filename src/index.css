@@ -2,39 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Cooking Companion Design System - Warm, cozy, and friendly */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Warm, cozy color palette inspired by kitchen warmth */
+    --background: 30 40% 98%;
+    --foreground: 24 24% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 24 24% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 24 24% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Warm coral/peach primary - like fresh ingredients */
+    --primary: 14 88% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 14 95% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Soft sage green secondary - fresh herbs */
+    --secondary: 122 25% 85%;
+    --secondary-foreground: 24 24% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Warm cream muted tones */
+    --muted: 32 25% 94%;
+    --muted-foreground: 24 12% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Soft butter accent - warm kitchen lighting */
+    --accent: 42 78% 88%;
+    --accent-foreground: 24 24% 12%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Fresh green for healthy elements */
+    --healthy: 122 45% 55%;
+    --healthy-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Warm red for nutrition alerts */
+    --destructive: 0 72% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 32 25% 88%;
+    --input: 32 25% 94%;
+    --ring: 14 88% 65%;
+
+    /* Gradients for visual warmth */
+    --gradient-warm: linear-gradient(135deg, hsl(14 88% 65%), hsl(22 85% 70%));
+    --gradient-fresh: linear-gradient(135deg, hsl(122 45% 55%), hsl(142 50% 60%));
+    --gradient-cozy: linear-gradient(180deg, hsl(30 40% 98%), hsl(32 25% 94%));
+
+    /* Shadows with warmth */
+    --shadow-warm: 0 10px 30px -5px hsl(14 88% 65% / 0.15);
+    --shadow-cozy: 0 4px 20px -2px hsl(24 24% 12% / 0.08);
+    --shadow-glow: 0 0 20px hsl(14 95% 75% / 0.3);
 
     --radius: 0.5rem;
 
@@ -100,6 +119,46 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-background to-muted text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Recipe card hover effects */
+  .recipe-card {
+    @apply transition-all duration-300 ease-out hover:shadow-warm hover:-translate-y-1;
+  }
+
+  /* Cooking action buttons */
+  .btn-cooking {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground rounded-full px-6 py-3 font-semibold transition-all duration-300 hover:shadow-glow hover:scale-105;
+  }
+
+  .btn-healthy {
+    @apply bg-gradient-to-r from-healthy to-emerald-500 text-healthy-foreground rounded-full px-4 py-2 font-medium transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+
+  /* Ingredient tag styles */
+  .ingredient-tag {
+    @apply bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-medium transition-colors hover:bg-secondary;
+  }
+
+  /* Nutrition badge */
+  .nutrition-badge {
+    @apply inline-flex items-center gap-2 bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm;
+  }
+
+  /* Search input warmth */
+  .search-input {
+    @apply bg-card border-border rounded-2xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200;
+  }
+
+  /* Filter chip styles */
+  .filter-chip {
+    @apply bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-200 hover:bg-primary hover:text-primary-foreground;
+  }
+
+  .filter-chip.active {
+    @apply bg-primary text-primary-foreground shadow-warm;
   }
 }
